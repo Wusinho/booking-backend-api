@@ -20,7 +20,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class AppointmentSerializer < ActiveModel::Serializer
-  attributes :id, :date
+  attributes :id, :date, :coach_id
   has_one :user
   has_one :coach
 end
