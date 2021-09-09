@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, :authorized, only: [:auto_login, :show, :update, :destroy]
+  before_action :set_user, :authorized, only: %i[auto_login show update destroy]
 
   # GET /users
   def index
@@ -17,10 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.valid?
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
+      token = encode_token({ user_id: @user.id })
+      render json: { user: @user, token: token }
     else
-      render json: {error: "Invalid username or password"}
+      render json: { error: 'Invalid username or password' }
     end
   end
 
@@ -42,32 +42,31 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(username: params[:username])
 
-    if @user && @user.authenticate(params[:password])
-      token = encode_token({user_id: @user.id})
+    if @user&.authenticate(params[:password])
+      token = encode_token({ user_id: @user.id })
       render json: {
-        user: @user, 
+        user: @user,
         token: token,
         status: true
-    }
+      }
     else
-      render json: {error: "Invalid username or password"}
+      render json: { error: 'Invalid username or password' }
     end
   end
-
 
   def auto_login
     render json: @user
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.permit(:username, :password, :password_confirmation)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    end
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.permit(:username, :password, :password_confirmation)
+  end
 end

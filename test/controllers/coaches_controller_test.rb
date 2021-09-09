@@ -1,16 +1,16 @@
-require "test_helper"
+require 'test_helper'
 
 class CoachesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @coach = coaches(:one)
   end
 
-  test "should get index" do
+  test 'should get index' do
     get coaches_url, as: :json
     assert_response :success
   end
 
-  test "should create coach" do
+  test 'should create coach' do
     assert_difference('Coach.count') do
       post coaches_url, params: { coach: { country: @coach.country, name: @coach.name } }, as: :json
     end
@@ -18,17 +18,17 @@ class CoachesControllerTest < ActionDispatch::IntegrationTest
     assert_response 201
   end
 
-  test "should show coach" do
+  test 'should show coach' do
     get coach_url(@coach), as: :json
     assert_response :success
   end
 
-  test "should update coach" do
+  test 'should update coach' do
     patch coach_url(@coach), params: { coach: { country: @coach.country, name: @coach.name } }, as: :json
     assert_response 200
   end
 
-  test "should destroy coach" do
+  test 'should destroy coach' do
     assert_difference('Coach.count', -1) do
       delete coach_url(@coach), as: :json
     end
