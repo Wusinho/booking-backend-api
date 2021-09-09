@@ -21,6 +21,8 @@ gem 'jwt', '~> 2.2', '>= 2.2.3'
 gem 'annotate', '~> 3.1', '>= 3.1.1'  
 gem 'active_model_serializers', '~> 0.10.12'
 gem 'faker', '~> 2.19'
+gem 'rubocop', '>= 1.0', '< 2.0'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
