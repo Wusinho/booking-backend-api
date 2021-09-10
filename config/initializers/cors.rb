@@ -8,7 +8,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     expose: ['Authorization']
   end
   allow do
-    origins 'https://wusinho.github.io/React-Redux-Catalogue/'
+    origins 'https://priceless-northcutt-f987d7.netlify.app/'
 
     resource '*',
     headers: :any,
