@@ -8,7 +8,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     expose: ['Authorization']
   end
   allow do
-    origins 'https://priceless-northcutt-f987d7.netlify.app/'
+    origins '*'
 
     resource '*',
     headers: :any,
