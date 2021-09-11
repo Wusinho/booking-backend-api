@@ -22,4 +22,19 @@
 class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :coach
+
+  validates :coach_id, presence: true
+  validates :user_id, presence: true
+  validates :date, presence: true
+
+  validate :after_one_months?
+
+  scope :upcoming, -> { where('date >= ?', DateTime.now) }
+
+  def after_one_month?
+    return unless date > DateTime.now + 1.months
+
+    errors.add(:error, "Sorry. The appointment can't be set past 1 month in the future.")
+  end
+
 end

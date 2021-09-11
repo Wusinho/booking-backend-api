@@ -9,4 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Coach < ApplicationRecord
+
+  validates :country, presence: true
+  validates :name, presence: true
 end

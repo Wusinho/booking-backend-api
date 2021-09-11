@@ -5,9 +5,11 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
 
-    @Users_appointments = @appointments.find_all { | id | id.user_id == logged_in_user.id }
+    @upcoming = Attendance.upcoming.sort { |a, b| a.date <=> b.date }
 
-    render json: @Users_appointments
+    @Users_upcoming_appointments = @upcoming.find_all { | id | id.user_id == logged_in_user.id }
+
+    render json: @Users_upcoming_appointments
 
   end
 
