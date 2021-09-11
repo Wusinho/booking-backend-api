@@ -27,7 +27,7 @@ class Appointment < ApplicationRecord
   validates :user_id, presence: true
   validates :date, presence: true
 
-  validate :after_one_months?
+  validate :after_one_month?
 
   scope :upcoming, -> { where('date >= ?', DateTime.now) }
 

@@ -3,9 +3,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
-    @appointments = Appointment.all
 
-    @upcoming = Attendance.upcoming.sort { |a, b| a.date <=> b.date }
+    @upcoming = Appointment.upcoming.sort { |a, b| a.date <=> b.date }
 
     @Users_upcoming_appointments = @upcoming.find_all { | id | id.user_id == logged_in_user.id }
 
@@ -23,9 +22,13 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
 
     if @appointment.save
-      render json: @appointment, status: :created, location: @appointment
+      render json: { success: 'Apointment created succesfully!' }, status: :created
+
+      # render json: @appointment, status: :created, location: @appointment
     else
-      render json: @appointment.errors, status: :unprocessable_entity
+      render json: { error: @appointment.errors[:error].first }, status: :unprocessable_entity
+
+      # render json: @appointment.errors, status: :unprocessable_entity
     end
   end
 
