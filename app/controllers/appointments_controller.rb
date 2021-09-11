@@ -5,7 +5,10 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all
 
-    render json: @appointments
+    @Users_appointments = @appointments.find_all { | id | id.user_id == logged_in_user.id }
+
+    render json: @Users_appointments
+
   end
 
   # GET /appointments/1
