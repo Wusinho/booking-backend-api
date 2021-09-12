@@ -35,13 +35,13 @@ class Appointment < ApplicationRecord
   def after_one_month?
     return unless date > DateTime.now + 1.months
 
-    errors.add(:error, "Sorry. The appointment can't be set past 1 month in the future.")
+    errors.add(:error, "Sorry. The appointment can't be set more than 1 month in the future.")
   end
 
   def before_time?
     return unless date < DateTime.now
 
-    errors.add(:error, "Sorry. The appointment can't be set past 1 month in the future.")
+    errors.add(:error, "Sorry. Can't go back in time")
   end
 
 end
