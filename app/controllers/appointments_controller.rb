@@ -3,13 +3,12 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments
   def index
+    render json: users_upcoming_appointment
+  end
 
-    @upcoming = Appointment.upcoming.sort { |a, b| a.date <=> b.date }
-
-    @Users_upcoming_appointments = @upcoming.find_all { | id | id.user_id == logged_in_user.id }
-
-    render json: @Users_upcoming_appointments
-
+  def users_upcoming_appointment
+    upcoming_appointment = Appointment.upcoming.sort { |a, b| a.date <=> b.date }
+    upcoming_appointment.find_all { | id | id.user_id == logged_in_user.id }
   end
 
   # GET /appointments/1
@@ -19,6 +18,7 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments
   def create
+
     @appointment = Appointment.new(user_id: logged_in_user.id, coach_id: params[:coach_id], date: params[:date])
 
     if @appointment.save
