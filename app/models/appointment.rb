@@ -28,11 +28,18 @@ class Appointment < ApplicationRecord
   validates :date, presence: true
 
   validate :after_one_month?
+  validate :before_time?
 
   scope :upcoming, -> { where('date >= ?', DateTime.now) }
 
   def after_one_month?
     return unless date > DateTime.now + 1.months
+
+    errors.add(:error, "Sorry. The appointment can't be set past 1 month in the future.")
+  end
+
+  def before_time?
+    return unless date < DateTime.now
 
     errors.add(:error, "Sorry. The appointment can't be set past 1 month in the future.")
   end
