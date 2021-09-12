@@ -3,7 +3,9 @@
 # Table name: appointments
 #
 #  id         :bigint           not null, primary key
+#  champion   :string
 #  date       :date
+#  role       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  coach_id   :bigint           not null
@@ -20,7 +22,7 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class AppointmentSerializer < ActiveModel::Serializer
-  attributes :id, :date, :coach_id
+  attributes :id, :date, :role, :champion
   has_one :user
   has_one :coach
 end

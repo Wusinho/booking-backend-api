@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(user_id: logged_in_user.id, coach_id: params[:coach_id], date: params[:date])
 
     if @appointment.save
-      render json: { success: 'Apointment created succesfully!' }, status: :created
+      render json: @appointment
 
       # render json: @appointment, status: :created, location: @appointment
     else

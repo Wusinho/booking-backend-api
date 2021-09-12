@@ -3,7 +3,9 @@
 # Table name: appointments
 #
 #  id         :bigint           not null, primary key
+#  champion   :string
 #  date       :date
+#  role       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  coach_id   :bigint           not null
@@ -26,6 +28,8 @@ class Appointment < ApplicationRecord
   validates :coach_id, presence: true
   validates :user_id, presence: true
   validates :date, presence: true
+  validates :role, presence: true
+  validates :champion, presence: true
 
   validate :after_one_month?
   validate :before_time?
