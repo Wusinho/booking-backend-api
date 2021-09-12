@@ -28,8 +28,6 @@ class Appointment < ApplicationRecord
   validates :coach_id, presence: true
   validates :user_id, presence: true
   validates :date, presence: true
-  validates :role, presence: true
-  validates :champion, presence: true
 
   validate :after_one_month?
   validate :before_time?
