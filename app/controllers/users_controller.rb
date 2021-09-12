@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.valid?
       token = encode_token({ user_id: @user.id })
       render json: { 
-        user: @user,
+        user: @user.username,
         token: token,
         status: true
       }
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     if @user&.authenticate(params[:password])
       token = encode_token({ user_id: @user.id })
       render json: {
-        user: @user,
+        user: @user.username,
         token: token,
         status: true
       }
