@@ -23,11 +23,11 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :coach
 
-  validates :coach_id, presence: true
-  validates :user_id, presence: true
-  validates :date, presence: true
+  # validates :coach_id, presence: true
+  # validates :user_id, presence: true
+  # validates :date, presence: true
 
-  validate :after_one_month?
+  # validate :after_one_month?
 
   scope :upcoming, -> { where('date >= ?', DateTime.now) }
 

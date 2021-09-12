@@ -19,7 +19,7 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = Appointment.new(user_id: logged_in_user.id, coach_id: params[:coach_id], date: params[:date])
 
     if @appointment.save
       render json: { success: 'Apointment created succesfully!' }, status: :created
