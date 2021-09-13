@@ -31,7 +31,7 @@ class Appointment < ApplicationRecord
 
   validate :after_one_month?
   validate :before_time?
-  validates_uniqueness_of :date, scope: :user_id
+  # validates_uniqueness_of :date, scope: :user_id
 
   scope :upcoming, -> { where('date >= ?', DateTime.now) }
 
