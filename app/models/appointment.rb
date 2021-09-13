@@ -46,5 +46,4 @@ class Appointment < ApplicationRecord
 
     errors.add(:error, "Sorry. Can't go back in time")
   end
-
 end
