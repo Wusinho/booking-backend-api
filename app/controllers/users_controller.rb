@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.create(user_params)
+    return if !@user.valid?
     if @user.valid?
       token = encode_token({ user_id: @user.id })
       render json: { 
@@ -24,7 +25,10 @@ class UsersController < ApplicationController
         status: true
       }
     else
-      render json: { error: 'Invalid username or password' }
+      render json: {
+        status: "error",
+        error: "Invalid username or password"
+      }
     end
   end
 
@@ -45,7 +49,7 @@ class UsersController < ApplicationController
   # LOGGING IN
   def login
     @user = User.find_by(username: params[:username])
-
+    return if !@user
     if @user&.authenticate(params[:password])
       token = encode_token({ user_id: @user.id })
       render json: {
@@ -54,7 +58,10 @@ class UsersController < ApplicationController
         status: true
       }
     else
-      render json: { error: 'Invalid username or password' }
+      render json: {
+        status: "error",
+        error: "Invalid username or password"
+      }
     end
   end
 
