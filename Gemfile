@@ -39,6 +39,8 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.1'
   gem 'hirb', '~> 0.7.3'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
+  gem 'capybara', '>= 3.26'
+  gem 'rspec', '~> 3.10'
   gem 'shoulda-matchers', '~> 4.5', '>= 4.5.1'
 end
 
