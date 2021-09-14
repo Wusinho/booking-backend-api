@@ -10,6 +10,5 @@ RSpec.describe Appointment, type: :model do
     it { should validate_presence_of(:date) }
     it { should validate_presence_of(:user_id) }
     it { should allow_value(DateTime.tomorrow).for(:date) }
-
   end
 end

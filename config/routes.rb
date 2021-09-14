@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :appointments, only: %i[create index show] 
-  resources :coaches, only: %i[create index show] 
-  resources :users, only: %i[create index show] 
+  resources :appointments, only: %i[create index show]
+  resources :coaches, only: %i[create index show]
+  resources :users, only: %i[create index show]
 
   post '/login', to: 'users#login'
   get '/auto_login', to: 'users#auto_login'
