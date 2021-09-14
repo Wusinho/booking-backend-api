@@ -30,7 +30,7 @@ This is a solo project at the end of the Microverse Main Technical Curriculum. I
 
 ## **API Deployed At:**
  
-### [Heroku](https://bmw-test-drive.herokuapp.com/api/v1/cars)
+### [Heroku](https://pure-chamber-62908.herokuapp.com/)
 
 ## **Live Project At:**
 
