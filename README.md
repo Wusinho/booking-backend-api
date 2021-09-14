@@ -30,11 +30,11 @@ This is a solo project at the end of the Microverse Main Technical Curriculum. I
 
 ## **API Deployed At:**
  
-### [Heroku](https://pure-chamber-62908.herokuapp.com/)
+### [Heroku](https://polar-dawn-64735.herokuapp.com/)
 
 ## **Live Project At:**
 
-### [GitHub Pages | LoL Catalogue](https://bismarck-gm.github.io/bmw-test-drive/)
+### [GitHub Pages | LoL Catalogue](https://wusinho.github.io/React-Redux-Catalogue/)
  
 ## **Getting Started**
  
