@@ -1,7 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Appointments", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+describe 'Appointments API', type: :request do
+  it 'returns all cars' do
+    get '/appointments'
+
+    expect(response).to have_http_status(:success)
   end
 end
