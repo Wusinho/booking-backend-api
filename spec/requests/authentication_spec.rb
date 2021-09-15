@@ -12,5 +12,5 @@ describe 'Authentication', type: :request do
       post '/login', params: { authentication: { email: user.username, password: 'sarasa' } }
       expect(response).to have_http_status(:no_content)
     end
-    end
+  end
 end

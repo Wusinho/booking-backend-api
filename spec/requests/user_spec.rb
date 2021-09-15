@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "POST /users - success", type: :request do
+describe 'POST /users - success', type: :request do
   let(:new_user) do
     {
       username: 'somebody',
@@ -13,13 +13,12 @@ describe "POST /users - success", type: :request do
     post '/users', params: new_user
     expect(response).to have_http_status(:success)
   end
-
 end
 
 describe 'POST /users - registration missing password', type: :request do
   let(:without_password) do
     {
-      username: 'somebody',
+      username: 'somebody'
     }
   end
   it 'fails and return error message' do

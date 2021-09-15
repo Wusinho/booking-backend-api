@@ -36,7 +36,6 @@ class Appointment < ApplicationRecord
 
   def after_one_month?
     return unless !date.nil? && date > DateTime.now + 1.months
-
   end
 
   def before_time?
