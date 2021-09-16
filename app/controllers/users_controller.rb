@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   # LOGGING IN
   def login
     @user = User.find_by(username: params[:username])
+    p @user ,' user'
     return unless @user
 
     if @user&.authenticate(params[:password])
