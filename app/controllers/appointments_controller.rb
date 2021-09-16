@@ -2,12 +2,9 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, :authorized, only: %i[show update destroy]
 
   def index
-    render json: users_upcoming_appointment
-  end
-
-  def users_upcoming_appointment
     upcoming_appointment = Appointment.upcoming.sort { |a, b| a.date <=> b.date }
-    upcoming_appointment.find_all { |id| id.user_id == logged_in_user.id }
+    user_filter = upcoming_appointment.find_all { |id| id.user_id == logged_in_user.id }
+    render json: user_filter
   end
 
   def show
