@@ -12,19 +12,20 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+    return unless authorized
     @appointment = Appointment.new(
-      user_id: logged_in_user.id,
       coach_id: params[:coach_id],
       date: params[:date],
       role: params[:role],
-      champion: params[:champion]
+      champion: params[:champion],
+      user_id: logged_in_user.id
     )
 
     if @appointment.save
       render json: @appointment
 
     else
-      render json: { error: @appointment.errors[:error].first }, status: :unprocessable_entity
+      render json: { error: 'error' }, status: :unprocessable_entity
 
     end
   end
