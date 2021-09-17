@@ -12,7 +12,6 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    return unless authorized
     @appointment = Appointment.new(
       coach_id: params[:coach_id],
       date: params[:date],
