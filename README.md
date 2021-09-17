@@ -30,11 +30,11 @@ This is a solo project at the end of the Microverse Main Technical Curriculum. I
 
 ## **API Deployed At:**
  
-### [Heroku](https://polar-dawn-64735.herokuapp.com/)
+### [Heroku](https://stormy-meadow-49812.herokuapp.com/)
 
 ## **Live Project At:**
 
-### [GitHub Pages | LoL Catalogue](https://wusinho.github.io/React-Redux-Catalogue/)
+### [GitHub Pages | LoL Catalogue](https://6144d74d4118f87127f8e629--gallant-allen-0cf0f8.netlify.app/)
  
 ## **Getting Started**
  
