@@ -1,4 +1,4 @@
-require_relative '../services/authentication_token.rb'
+require_relative '../services/authentication_token'
 
 class CoachesController < ApplicationController
   include AuthenticationToken

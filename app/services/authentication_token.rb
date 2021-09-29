@@ -1,5 +1,4 @@
 module AuthenticationToken
-
   def encode_token(payload)
     JWT.encode(payload, secret, algorithm)
   end
