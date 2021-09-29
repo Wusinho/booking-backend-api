@@ -6,8 +6,7 @@ class AppointmentsController < ApplicationController
   before_action :authorized, only: %i[show update destroy]
 
   def index
-    upcoming_appointment = Appointment.upcoming.sort { |a, b| a.date <=> b.date }
-    user_filter = upcoming_appointment.find_all { |id| id.user_id == logged_in_user.id }
+    user_filter = Appointment.current_user_appointments(logged_in_user.id)
     render json: user_filter
   end
 
