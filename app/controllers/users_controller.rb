@@ -1,5 +1,10 @@
+require_relative '../services/authentication_token.rb'
+
 class UsersController < ApplicationController
+  include AuthenticationToken
+
   before_action :authorized, only: %i[auto_login show update destroy]
+
 
   def index
     @users = User.all
@@ -13,11 +18,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-
+    p @user, '!!!!!!!!USER'
     return user_error unless @user.valid? 
 
     if @user.valid?
       token = encode_token({ user_id: @user.id })
+      # token = encode(@user)
+
       render json: {
         user: @user.username,
         token: token,

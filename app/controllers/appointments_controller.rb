@@ -1,4 +1,8 @@
+require_relative '../services/authentication_token.rb'
+
 class AppointmentsController < ApplicationController
+  include AuthenticationToken
+
   before_action :authorized, only: %i[show update destroy]
 
   def index
