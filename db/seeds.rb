@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+country = ['South Korea', 'China', 'USA', 'Sweden', 'Germany']
+
+Coach.create(name: Faker::Name.name, country: country[0])
+Coach.create(name: Faker::Name.name, country: country[1])
+Coach.create(name: Faker::Name.name, country: country[2])
+Coach.create(name: Faker::Name.name, country: country[3])
+Coach.create(name: Faker::Name.name, country: country[4])
