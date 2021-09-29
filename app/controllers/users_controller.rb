@@ -13,7 +13,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    return unless @user.valid?
+
+    return create_user_error unless @user.valid? 
 
     if @user.valid?
       token = encode_token({ user_id: @user.id })
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
         status: 'error',
         error: 'Invalid username or password'
       },
-             status: :unprocessable_entity
+        status: :unprocessable_entity
     end
   end
 
@@ -43,9 +44,14 @@ class UsersController < ApplicationController
     @user.destroy
   end
 
+
+  def create_user_error
+    render json: { error: 'please verify your pasword or name' }
+  end
+
   def login
     @user = User.find_by(username: params[:username])
-    return unless @user
+    return create_user_error unless @user
 
     if @user&.authenticate(params[:password])
       token = encode_token({ user_id: @user.id })
@@ -56,8 +62,7 @@ class UsersController < ApplicationController
       }
     else
       render json: {
-        status: 'error',
-        error: 'Invalid username or password'
+        status: 'Invalid username or password'
       }
     end
   end
