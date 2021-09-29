@@ -23,13 +23,6 @@ class UsersController < ApplicationController
         token: token,
         status: true
       }
-    else
-      render json: {
-        status: 'error',
-        error: 'Invalid username or password'
-      },
-        status: :unprocessable_entity
-    end
   end
 
   def update
@@ -60,22 +53,11 @@ class UsersController < ApplicationController
         token: token,
         status: true
       }
-    else
-      render json: {
-        status: 'Invalid username or password'
-      }
-    end
-  end
-
-  def auto_login
-    render json: @user
   end
 
   private
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+
 
   def user_params
     params.permit(:username, :password, :password_confirmation)

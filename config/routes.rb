@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :coaches, only: %i[create index show]
   resources :users, only: %i[create index show]
 
-  post '/login', to: 'users#login'
+  post '/users/login', to: 'users#login'
 
 
 end
