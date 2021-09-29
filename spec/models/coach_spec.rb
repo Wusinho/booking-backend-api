@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: coaches
+#
+#  id         :bigint           not null, primary key
+#  country    :string
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Coach, type: :model do
