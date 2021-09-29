@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, :authorized, only: %i[show update destroy]
+  before_action :authorized, only: %i[show update destroy]
 
   def index
     upcoming_appointment = Appointment.upcoming.sort { |a, b| a.date <=> b.date }

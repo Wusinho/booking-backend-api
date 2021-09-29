@@ -1,5 +1,5 @@
 class CoachesController < ApplicationController
-  before_action :set_coach, :authorized, only: %i[show update destroy]
+  before_action :authorized, only: %i[show update destroy]
 
   def index
     @coaches = Coach.all
