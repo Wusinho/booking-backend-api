@@ -1,85 +1,55 @@
-class UsersController < ApplicationController
-  before_action :set_user, :authorized, only: %i[auto_login show update destroy]
+require_relative '../services/authentication_token'
 
-  # GET /users
+class UsersController < ApplicationController
+  include AuthenticationToken
+
+  before_action :authorized, only: %i[auto_login show update destroy]
+
   def index
     @users = User.all
 
     render json: @users
   end
 
-  # GET /users/1
   def show
     render json: @user
   end
 
-  # POST /users
   def create
     @user = User.create(user_params)
-    return unless @user.valid?
 
-    if @user.valid?
-      token = encode_token({ user_id: @user.id })
-      render json: {
-        user: @user.username,
-        token: token,
-        status: true
-      }
-    else
-      render json: {
-        status: 'error',
-        error: 'Invalid username or password'
-      }
-    end
+    return user_error unless @user.valid?
+
+    token = encode_token({ user_id: @user.id })
+
+    render json: {
+      user: @user.username,
+      user_id: @user.id,
+      token: token,
+      status: true
+    }
   end
 
-  # PATCH/PUT /users/1
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
+  def user_error
+    render json: { error: 'please verify your pasword or name' }
   end
 
-  # DELETE /users/1
-  def destroy
-    @user.destroy
-  end
-
-  # LOGGING IN
   def login
     @user = User.find_by(username: params[:username])
-    p @user ,' user'
-    return unless @user
 
-    if @user&.authenticate(params[:password])
-      token = encode_token({ user_id: @user.id })
-      render json: {
-        user: @user.username,
-        token: token,
-        status: true
-      }
-    else
-      render json: {
-        status: 'error',
-        error: 'Invalid username or password'
-      }
-    end
-  end
+    return user_error unless @user&.authenticate(params[:password])
 
-  def auto_login
-    render json: @user
+    token = encode_token({ user_id: @user.id })
+    render json: {
+      user_id: @user.id,
+      user: @user.username,
+      token: token,
+      status: true
+    }
   end
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
   def user_params
     params.permit(:username, :password, :password_confirmation)
   end

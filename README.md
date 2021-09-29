@@ -30,17 +30,17 @@ This is a solo project at the end of the Microverse Main Technical Curriculum. I
 
 ## **API Deployed At:**
  
-### [Heroku](https://pure-chamber-62908.herokuapp.com/)
+### [Heroku](https://stormy-meadow-49812.herokuapp.com/)
 
 ## **Live Project At:**
 
-### [GitHub Pages | LoL Catalogue](https://bismarck-gm.github.io/bmw-test-drive/)
+### [GitHub Pages | LoL Catalogue](https://6144d74d4118f87127f8e629--gallant-allen-0cf0f8.netlify.app/)
  
 ## **Getting Started**
  
 - Open your terminal and cd where you want to store the project.
 
-`git clone https://github.com/Bismarck-GM/BMW-test-drive-backend.git`
+`git clone hhttps://github.com/Wusinho/booking-backend-api.git`
  
 After that, open the folder with the code editor of your choice and follow the steps below.
  
