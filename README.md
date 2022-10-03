@@ -1,5 +1,4 @@
 # Rails-Api Booking-Coach-App
-# Final Capstone Project.
  
 This is a solo project at the end of the Microverse Main Technical Curriculum. It's a real-world-like project, built with business specifications to improve and test the achievement of technical and soft skills gained during the program. The technical requirements of this API project are:
 
@@ -91,11 +90,6 @@ Feel free to check the [issues page](https://github.com/Wusinho/booking-backend-
 ## **Show your support**
  
 Give a ⭐️ if you like this project!
- 
-## **Acknowledgments**
- 
-- Microverse for the opportunity;
-- The Minskins for the support.
  
 ## 📝 **License**
  
